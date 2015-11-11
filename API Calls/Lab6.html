@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Lab 6</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#check").click(function(){
+					$.ajax({
+					url: "http://api.openweathermap.org/data/2.5/weather",
+					type: 'GET',
+					data: {'q': 'Denver, Phoenix, Los Angeles'/*$('#location').val()*/, 'APPID': '4df59491f3485c0dc3de91606e265d69'},
+					success: function(response){
+						console.log(response);
+						/*$("#temperature").text(response.main.temp-273.15);
+						$("#humidity").text(response.main.humidity);
+						$("#speed").text(response.wind.speed);
+						*/
+					}
+				});
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<h2>Weather REST API</h2>
+		<p>Location:</p><input id="location" value="Boulder, CO"></input><button id="check">Check</button>
+		<p>Temperature: <span id="temperature"></span></p>
+		<p>Humidity: <span id="humidity"></span> %</p>
+		<p>Wind Speed: <span id="speed"></span></p>
+	</body>
+</html>
